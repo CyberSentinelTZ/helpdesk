@@ -1,0 +1,340 @@
+        /* Multi-step form styles */
+        .multi-step-form {
+            position: relative;
+        }
+        
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .form-step.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Progress bar */
+        .progress-container {
+            margin-bottom: 2rem;
+        }
+        
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 1rem;
+            counter-reset: step;
+        }
+        
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #e9ecef;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        
+        .progress-bar {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 4px;
+            background: var(--hospital-green);
+            transform: translateY(-50%);
+            transition: width 0.5s ease;
+            z-index: 2;
+        }
+        
+        .step {
+            position: relative;
+            z-index: 3;
+            background: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #e9ecef;
+            font-weight: bold;
+            color: #6c757d;
+            transition: all 0.3s ease;
+        }
+        
+        .step.active {
+            border-color: var(--hospital-green);
+            background: var(--hospital-green);
+            color: white;
+        }
+        
+        .step.completed {
+            border-color: var(--hospital-green);
+            background: var(--hospital-green);
+            color: white;
+        }
+        
+        .step-label {
+            position: absolute;
+            top: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        
+        .step.active .step-label {
+            color: var(--hospital-green);
+            font-weight: bold;
+        }
+        
+        /* Two-column layout for step 1 */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .form-section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--hospital-blue);
+        }
+        
+        .form-section h3 {
+            color: var(--hospital-blue);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Password strength */
+        .password-strength {
+            margin-top: 10px;
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .password-strength-meter {
+            height: 100%;
+            width: 0%;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .strength-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .requirements-list {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        
+        .requirements-list li {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 5px;
+            list-style-type: circle;
+        }
+        
+        .requirements-list li.valid {
+            color: var(--hospital-green);
+        }
+        
+        .requirements-list li.valid::before {
+            content: "✓ ";
+            font-weight: bold;
+        }
+        
+        /* Form navigation */
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .btn-step {
+            min-width: 120px;
+        }
+        
+        .btn-step i {
+            margin: 0 5px;
+        }
+        
+        .btn-next {
+            margin-left: auto;
+        }
+        
+        /* Role selection */
+        .role-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        
+        .role-badge {
+            padding: 10px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .role-badge:hover {
+            border-color: var(--hospital-blue);
+            background: #f0f8ff;
+        }
+        
+        .role-badge.selected {
+            border-color: var(--hospital-green);
+            background: #f0fff4;
+            font-weight: bold;
+        }
+        
+        .role-badge.admin {
+            border-color: #dc3545;
+            background: #ffe6e6;
+        }
+        
+        .role-badge.technician {
+            border-color: #ffc107;
+            background: #fff9e6;
+        }
+        
+        .role-badge.staff {
+            border-color: #28a745;
+            background: #f0fff4;
+        }
+        
+        /* Summary step */
+        .summary-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        
+        .summary-label {
+            font-weight: 500;
+            color: #666;
+        }
+        
+        .summary-value {
+            color: var(--dark-color);
+            text-align: right;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: var(--hospital-green);
+            margin-bottom: 1rem;
+        }
+        
+        .confirmation-message {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        /* Animation for step transitions */
+        .slide-out {
+            animation: slideOutLeft 0.5s ease forwards;
+        }
+        
+        .slide-in {
+            animation: slideInRight 0.5s ease forwards;
+        }
+        
+        @keyframes slideOutLeft {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Department quick select */
+        .department-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .department-option {
+            padding: 10px;
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .department-option:hover {
+            border-color: var(--hospital-blue);
+            background: #f0f8ff;
+        }
+        
+        .department-option.selected {
+            border-color: var(--hospital-green);
+            background: #f0fff4;
+            font-weight: bold;
+        }

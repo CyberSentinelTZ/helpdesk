@@ -1,0 +1,778 @@
+/* Arusha City Hospital Help Desk - Main Styles */
+
+:root {
+    --primary-color: #1a5276;
+    --secondary-color: #28b463;
+    --accent-color: #e74c3c;
+    --light-color: #f8f9fa;
+    --dark-color: #2c3e50;
+    --text-color: #333;
+    --border-color: #ddd;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --hospital-blue: #1a5276;
+    --hospital-green: #28b463;
+    --header-height: 88px;
+    --nav-height: 56px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding-top: calc(var(--header-height) + var(--nav-height) + 8px); /* extra space for fixed header + nav */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.header {
+    background: linear-gradient(to right, var(--hospital-blue), var(--hospital-green));
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hospital-logo {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hospital-logo i {
+    font-size: 2rem;
+    color: var(--hospital-blue);
+}
+
+.hospital-info h1 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.hospital-info p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Top navigation (dashboards) */
+.main-nav {
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-bottom: 1px solid #e5e7eb;
+    position: fixed;
+    top: var(--header-height); /* sits just below fixed header */
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+}
+
+.nav-title {
+    font-weight: 600;
+    color: var(--hospital-blue);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-user {
+    font-size: 0.95rem;
+    color: #444;
+    margin-right: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.nav-right .btn {
+    width: auto;
+    padding-inline: 14px;
+}
+
+.nav-user img {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e5e7eb;
+}
+
+.btn-small {
+    width: auto;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+
+/* Sidebar layout for dashboards */
+.layout {
+    display: block;
+    min-height: calc(100vh - (var(--header-height) + var(--nav-height) + 8px));
+}
+
+.sidebar {
+    position: fixed;
+    top: calc(var(--header-height) + var(--nav-height) + 8px);
+    bottom: 0;
+    left: 0;
+    width: 240px;
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 1.5rem 1.25rem;
+    box-shadow: 2px 0 12px rgba(15, 23, 42, 0.6);
+}
+
+.sidebar-header {
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #9ca3af;
+    margin-bottom: 1rem;
+}
+
+.sidebar-menu {
+    list-style: none;
+    margin-top: 0.5rem;
+}
+
+.sidebar-menu li + li {
+    margin-top: 0.25rem;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.55rem 0.75rem;
+    border-radius: 0.5rem;
+    color: #e5e7eb;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.sidebar-menu a i {
+    font-size: 0.95rem;
+    width: 18px;
+    text-align: center;
+}
+
+.sidebar-menu a span {
+    flex: 1;
+}
+
+.sidebar-menu a:hover {
+    background: rgba(55, 65, 81, 0.8);
+    transform: translateX(2px);
+}
+
+.sidebar-menu a.active {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #f9fafb;
+}
+
+.sidebar-section-title {
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6b7280;
+}
+
+.sidebar-footer {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: #6b7280;
+}
+
+/* Main Content Styles */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: auto;
+    padding: 2rem 0 3rem;
+}
+
+/* Adjust main content when used with sidebar layout */
+.layout .main-content {
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: auto;
+    padding: 2rem 2.5rem 3rem;
+    margin-left: 240px;
+}
+
+.layout .main-content .container {
+    max-width: 100%;
+    padding: 0;
+}
+
+/* Form Container */
+.form-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 500px;
+    transition: transform 0.3s ease;
+}
+
+.form-container:hover {
+    transform: translateY(-5px);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-header h2 {
+    color: var(--hospital-blue);
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.form-header p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--hospital-blue);
+    box-shadow: 0 0 0 3px rgba(26, 82, 118, 0.1);
+}
+
+.form-control.error {
+    border-color: var(--danger-color);
+}
+
+.error-message {
+    color: var(--danger-color);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(to right, var(--hospital-blue), var(--hospital-green));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(26, 82, 118, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: linear-gradient(to right, #6c757d, #495057);
+}
+
+.btn-danger {
+    background: linear-gradient(to right, #dc3545, #c82333);
+}
+
+/* Form Footer */
+.form-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.form-footer p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.form-footer a {
+    color: var(--hospital-blue);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Alert Messages */
+.alert {
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    display: none;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Dashboard Styles */
+.dashboard-intro {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    margin: 2rem 0 1.5rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+
+.dashboard-intro h2 {
+    color: var(--hospital-blue);
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.dashboard-intro p {
+    color: #555;
+    font-size: 0.98rem;
+}
+
+.dashboard-cards {
+    margin-bottom: 2rem;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    box-shadow: 0 4px 18px rgba(15,23,42,0.06);
+    border: 1px solid #e5e7eb;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(15,23,42,0.10);
+    border-color: var(--hospital-blue);
+}
+
+.card-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+}
+
+.card-icon-primary {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+.card-icon-success {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+.card-icon-warning {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.card-icon-info {
+    background: linear-gradient(135deg, #06b6d4, #0e7490);
+}
+
+.card-body h3 {
+    font-size: 1.05rem;
+    color: var(--dark-color);
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-body p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 0.2rem;
+}
+
+.card-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--hospital-blue);
+}
+
+.card-subtext {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* User management table */
+.user-management-section {
+    margin-top: 1.5rem;
+}
+
+.user-management-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.user-management-header h3 {
+    margin: 0;
+    color: var(--hospital-blue);
+}
+
+.user-management-subtitle {
+    margin: 0.25rem 0 0;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.user-management-actions .btn {
+    width: auto;
+}
+
+.user-table-wrapper {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.user-table thead {
+    background: #f9fafb;
+}
+
+.user-table th,
+.user-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.user-table th {
+    font-weight: 600;
+    color: #4b5563;
+    white-space: nowrap;
+}
+
+.user-table tbody tr:hover {
+    background: #f9fafb;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.15rem 0.60rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.badge-active {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.badge-inactive {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.badge-role {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+/* Admin overview cards: force three columns on desktop */
+@media (min-width: 992px) {
+    .dashboard-main-grid .dashboard-column-primary .card-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Two-column main dashboard layout (overview left, quick actions right) */
+.dashboard-main-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1.1fr);
+    gap: 1.75rem;
+    align-items: flex-start;
+}
+
+.dashboard-column {
+    min-width: 0;
+}
+
+@media (max-width: 992px) {
+    .dashboard-main-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* Sidebar responsive behavior */
+@media (max-width: 992px) {
+    .layout {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .sidebar {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        border-radius: 0;
+    }
+
+    .sidebar-menu {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+
+    .sidebar-menu li {
+        flex: 1 1 45%;
+    }
+
+    .sidebar-menu a {
+        justify-content: flex-start;
+    }
+
+    .layout .main-content {
+        padding: 1.5rem 1.25rem 2rem;
+    }
+}
+
+/* Footer Styles */
+.footer {
+    background: var(--dark-color);
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
+
+
+
+
+
+/* Two-column form layout additions */
+
+.two-column-form {
+    max-width: 900px !important;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .full-width {
+        grid-column: span 2;
+    }
+}
+
+.form-section {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--hospital-blue);
+    margin-bottom: 1rem;
+}
+
+.form-section h3 {
+    color: var(--hospital-blue);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Responsive improvements for mobile */
+@media (max-width: 767px) {
+    .two-column-form {
+        padding: 1.5rem !important;
+    }
+    
+    .form-section {
+        padding: 1rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .form-actions .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Form actions styling */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.btn-back {
+    background: linear-gradient(to right, #6c757d, #495057);
+}
+
+/* Info box styling */
+.info-box {
+    background: #e7f3ff;
+    border-left: 4px solid var(--hospital-blue);
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-box i {
+    color: var(--hospital-blue);
+    font-size: 1.2rem;
+}
+

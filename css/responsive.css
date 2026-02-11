@@ -1,0 +1,254 @@
+/* Arusha City Hospital Help Desk - Responsive Styles */
+
+/* Tablet Devices (768px and below) */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .logo-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hospital-info h1 {
+        font-size: 1.3rem;
+    }
+    
+    .form-container {
+        padding: 2rem;
+        margin: 0 1rem;
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-links {
+        justify-content: center;
+    }
+}
+
+/* Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+    .header {
+        padding: 0.8rem 0;
+    }
+    
+    .hospital-logo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .hospital-logo i {
+        font-size: 1.5rem;
+    }
+    
+    .hospital-info h1 {
+        font-size: 1.1rem;
+    }
+    
+    .hospital-info p {
+        font-size: 0.8rem;
+    }
+    
+    .form-container {
+        padding: 1.5rem;
+    }
+    
+    .form-header h2 {
+        font-size: 1.4rem;
+    }
+    
+    .form-control {
+        padding: 10px 12px;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+    }
+    
+    .dashboard-header {
+        padding: 1rem;
+    }
+    
+    .user-info {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Small Mobile Devices (360px and below) */
+@media (max-width: 360px) {
+    .form-container {
+        padding: 1rem;
+    }
+    
+    .form-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .dashboard-card {
+        padding: 1rem;
+    }
+}
+
+/* Landscape Mode for Mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+    .main-content {
+        padding: 1rem 0;
+        min-height: auto;
+    }
+    
+    .form-container {
+        margin: 1rem 0;
+    }
+}
+
+/* High-Resolution Displays */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+    
+    .form-container {
+        max-width: 600px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .form-container {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+    
+    .btn, .footer {
+        display: none;
+    }
+}
+
+
+
+/* Two-column layout responsive adjustments */
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+    .two-column-form {
+        max-width: 1000px !important;
+    }
+    
+    .form-section {
+        padding: 2rem;
+    }
+}
+
+/* Tablet Landscape */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .two-column-form {
+        max-width: 950px !important;
+    }
+}
+
+/* Tablet Portrait */
+@media (min-width: 768px) and (max-width: 991px) {
+    .two-column-form {
+        max-width: 750px !important;
+    }
+    
+    .form-grid {
+        gap: 1rem;
+    }
+    
+    .form-section {
+        padding: 1.25rem;
+    }
+}
+
+/* Mobile Landscape */
+@media (max-width: 767px) {
+    .form-grid {
+        gap: 1rem;
+    }
+    
+    .form-section {
+        padding: 1rem;
+    }
+    
+    .department-selector {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+    }
+    
+    .role-badges {
+        flex-direction: column !important;
+    }
+    
+    .role-badge {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .two-column-form {
+        padding: 1rem !important;
+        margin: 0.5rem !important;
+    }
+    
+    .form-header h2 {
+        font-size: 1.3rem !important;
+    }
+    
+    .form-section h3 {
+        font-size: 1rem !important;
+    }
+    
+    .department-selector {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .form-actions {
+        gap: 0.5rem !important;
+    }
+    
+    .btn {
+        padding: 10px 15px !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+/* Print styles for registration form */
+@media print {
+    .form-container {
+        box-shadow: none !important;
+        border: 1px solid #000 !important;
+        max-width: 100% !important;
+    }
+    
+    .form-actions, .footer, .header .admin-info {
+        display: none !important;
+    }
+    
+    .form-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    
+    .two-column-form {
+        column-count: 2;
+        column-gap: 2rem;
+    }
+    
+    .full-width {
+        column-span: all;
+    }
+}
