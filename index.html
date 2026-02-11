@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Arusha City Hospital ICT Help Desk</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏥</text></svg>">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="hospital-logo">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <div class="hospital-info">
+                        <h1>Arusha City Hospital</h1>
+                        <p>ICT Help Desk Support System</p>
+                    </div>
+                </div>
+                <div class="current-time" id="currentTime">
+                    <!-- Time will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2><i class="fas fa-sign-in-alt"></i> User Login Panel</h2>
+                    <p>Access the ICT Help Desk System</p>
+                </div>
+                
+                <div id="message" class="alert" style="display: none;"></div>
+                
+                <form id="loginForm" method="POST" action="login_process.php">
+                    <div class="form-group">
+                        <label for="phone_number">
+                            <i class="fas fa-phone"></i> Phone Number
+                        </label>
+                        <div class="phone-input-container">
+                            <div class="country-code">+255</div>
+                            <input type="tel" 
+                                   id="phone_number" 
+                                   name="phone_number" 
+                                   class="form-control" 
+                                   placeholder="Enter your phone number"
+                                   pattern="[0-9]{9}"
+                                   title="Enter 9 digits after 255"
+                                   required>
+                        </div>
+                        <small class="help-text">Format: 7XX XXX XXX (without spaces)</small>
+                        <div class="error-message" id="phoneError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <div class="password-container">
+                            <input type="password" 
+                                   id="password" 
+                                   name="password" 
+                                   class="form-control" 
+                                   placeholder="Enter your password"
+                                   required>
+                            <span class="toggle-password" onclick="togglePassword()">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                        </div>
+                        <div class="error-message" id="passwordError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn" id="loginBtn">
+                            <i class="fas fa-sign-in-alt"></i> Login to Help Desk
+                        </button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input type="checkbox" id="remember" name="remember" class="form-check-input">
+                            <label for="remember" class="form-check-label">Remember me on this device</label>
+                        </div>
+                    </div>
+                </form>
+                
+                <div class="form-footer">
+                    <p>
+                        <i class="fas fa-info-circle"></i> Forgot password? 
+                        Contact ICT Department at Adminstration Office.
+                    </p>
+                    <p>
+                        <i class="fas fa-shield-alt"></i> Secure login powered by Arusha City Hospital.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <!-- JavaScript -->
+    <script src="js/validation.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Update current time
+        function updateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                timeZone: 'Africa/Dar_es_Salaam'
+            };
+            document.getElementById('currentTime').innerHTML = 
+                now.toLocaleDateString('en-TZ', options);
+        }
+        
+        setInterval(updateTime, 1000);
+        updateTime();
+        
+        // Form submission handler
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const phone = document.getElementById('phone_number').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple validation
+            if (!phone || !password) {
+                showMessage('Please fill in all fields', 'error');
+                return;
+            }
+            
+            // Format phone number
+            const formattedPhone = formatPhoneNumber(phone);
+            
+            // Show loading state
+            const btn = document.getElementById('loginBtn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
+            btn.disabled = true;
+            
+            // Simulate API call (replace with actual API call)
+            setTimeout(() => {
+                // For demo purposes, simulate successful login
+                // In production, this should be an actual AJAX call to your backend
+                
+                // Create a form and submit it (for PHP processing)
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = 'login_process.php';
+                
+                const phoneInput = document.createElement('input');
+                phoneInput.type = 'hidden';
+                phoneInput.name = 'phone_number';
+                phoneInput.value = formattedPhone;
+                
+                const passwordInput = document.createElement('input');
+                passwordInput.type = 'hidden';
+                passwordInput.name = 'password';
+                passwordInput.value = password;
+                
+                form.appendChild(phoneInput);
+                form.appendChild(passwordInput);
+                document.body.appendChild(form);
+                form.submit();
+                
+            }, 1500);
+        });
+        
+        function formatPhoneNumber(phone) {
+            // Remove all non-digits
+            phone = phone.replace(/\D/g, '');
+            
+            // If starts with 0, replace with 255
+            if (phone.startsWith('0')) {
+                phone = '255' + phone.substring(1);
+            }
+            
+            // If doesn't start with 255, add it
+            if (!phone.startsWith('255')) {
+                phone = '255' + phone;
+            }
+            
+            return phone;
+        }
+        
+        function showMessage(message, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = message;
+            messageDiv.className = 'alert alert-' + type;
+            messageDiv.style.display = 'block';
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.querySelector('.toggle-password i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.className = 'fas fa-eye-slash';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.className = 'fas fa-eye';
+            }
+        }
+        
+        // Add some styles for phone input
+        const style = document.createElement('style');
+        style.textContent = `
+            .phone-input-container {
+                display: flex;
+                align-items: center;
+            }
+            
+            .country-code {
+                background: #f8f9fa;
+                padding: 12px 15px;
+                border: 2px solid #ddd;
+                border-right: none;
+                border-radius: 8px 0 0 8px;
+                font-weight: 500;
+            }
+            
+            .phone-input-container input {
+                border-radius: 0 8px 8px 0;
+                flex: 1;
+            }
+            
+            .password-container {
+                position: relative;
+            }
+            
+            .toggle-password {
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: pointer;
+                color: #666;
+            }
+            
+            .help-text {
+                display: block;
+                margin-top: 5px;
+                color: #666;
+                font-size: 0.85rem;
+            }
+            
+            .form-check {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .form-check-input {
+                width: 18px;
+                height: 18px;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
